@@ -226,7 +226,7 @@ RUN pip3   --no-cache-dir  install hf_transfer
 COPY download_model.py /workspace/download_model.py
 
 # Run the script to download the model
-RUN python /workspace/download_model.py
+RUN python3 /workspace/download_model.py
 
 
 CMD [ "/start.sh" ]
