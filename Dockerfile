@@ -218,7 +218,7 @@ RUN wget -O /ComfyUI/models/loras/GracePenelopeTargaryenV5.safetensors "https://
 RUN wget -O /ComfyUI/models/loras/VideoAditor_flux_realism_lora.safetensors "https://huggingface.co/VideoAditor/Flux-Lora-Realism/resolve/main/flux_realism_lora.safetensors?download=true" --progress=bar:force:noscroll
 
 RUN pip3 install ffmpeg-python
-RUN pip3 install git
+RUN pip3 install python-git
 
 RUN pip3   --no-cache-dir  install huggingface_hub[hf_transfer]
 RUN pip3   --no-cache-dir  install hf_transfer
