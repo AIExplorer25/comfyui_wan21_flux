@@ -220,30 +220,13 @@ RUN wget -O /ComfyUI/models/loras/VideoAditor_flux_realism_lora.safetensors "htt
 RUN pip3 install ffmpeg-python
 RUN pip3 install git
 
-RUN pip3  install huggingface_hub[hf_transfer]
-RUN pip3  install hf_transfer
+RUN pip3   --no-cache-dir  install huggingface_hub[hf_transfer]
+RUN pip3   --no-cache-dir  install hf_transfer
 
+COPY download_model.py /workspace/download_model.py
 
-hf_hub_download(repo_id="Kijai/WanVideo_comfy", filename="Wan2_1-T2V-14B_fp8_e4m3fn.safetensors", local_dir="/ComfyUI/models/unet/")
+# Run the script to download the model
+RUN python /workspace/download_model.py
 
-hf_hub_download(repo_id="Kijai/WanVideo_comfy", filename="Wan2_1-I2V-14B-720P_fp8_e4m3fn.safetensors", local_dir="/ComfyUI/models/unet/")
-
-
-hf_hub_download(repo_id="Kijai/WanVideo_comfy", filename="umt5-xxl-enc-fp8_e4m3fn.safetensors", local_dir="/ComfyUI/models/clip/")
-
-hf_hub_download(repo_id="Kijai/WanVideo_comfy", filename="Wan2_1_VAE_fp32.safetensors", local_dir="/ComfyUI/models/vae/")
-
-
-
-
-hf_hub_download(repo_id="Kijai/WanVideo_comfy", filename="open-clip-xlm-roberta-large-vit-huge-14_visual_fp16.safetensors", local_dir="/ComfyUI/models/clip/")
-
-hf_hub_download(repo_id="Kijai/WanVideo_comfy", filename="umt5-xxl-enc-bf16.safetensors", local_dir="/ComfyUI/models/clip/")
- 
-
-hf_hub_download(repo_id="gemasai/4x_NMKD-Siax_200k", filename="4x_NMKD-Siax_200k.pth", local_dir="/ComfyUI/models/upscale_models/")
-
-hf_hub_download(repo_id="ai-forever/Real-ESRGAN", filename="RealESRGAN_x8.pth", local_dir="/ComfyUI/models/upscale_models/")
- 
 
 CMD [ "/start.sh" ]
